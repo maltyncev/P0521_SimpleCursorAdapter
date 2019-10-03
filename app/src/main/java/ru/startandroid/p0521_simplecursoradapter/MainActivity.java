@@ -11,6 +11,8 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends Activity {
 
     private static final int CM_DELETE_ID = 1;
@@ -18,6 +20,7 @@ public class MainActivity extends Activity {
     DB db;
     SimpleCursorAdapter scAdapter;
     Cursor cursor;
+    String str = "";
 
     /** Called when the activity is first created. */
     public void onCreate(Bundle savedInstanceState) {

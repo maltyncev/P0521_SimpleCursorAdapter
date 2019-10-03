@@ -77,7 +77,7 @@ public class DB {
             db.execSQL(DB_CREATE);
 
             ContentValues cv = new ContentValues();
-            for (int i = 1; i < 5; i++) {
+            for (int i = 1; i < 2; i++) {
                 cv.put(COLUMN_TXT, "sometext " + i);
                 cv.put(COLUMN_IMG, R.drawable.ic_launcher);
                 db.insert(DB_TABLE, null, cv);
