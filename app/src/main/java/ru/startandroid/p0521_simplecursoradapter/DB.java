@@ -47,7 +47,7 @@ public class DB {
 
     // получить все данные из таблицы DB_TABLE
     public Cursor getAllData() {
-        return mDB.query(DB_TABLE, null, null, null, null, null, null);
+        return mDB.query(DB_TABLE, null,  null, null, null, null, null);
     }
 
     // добавить запись в DB_TABLE
@@ -77,8 +77,8 @@ public class DB {
             db.execSQL(DB_CREATE);
 
             ContentValues cv = new ContentValues();
-            for (int i = 1; i < 2; i++) {
-                cv.put(COLUMN_TXT, "sometext " + i);
+            for (int i = 0; i < 1; i++) {
+                cv.put(COLUMN_TXT, "Ваши заметки:");
                 cv.put(COLUMN_IMG, R.drawable.ic_launcher);
                 db.insert(DB_TABLE, null, cv);
             }

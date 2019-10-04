@@ -8,8 +8,10 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -20,12 +22,15 @@ public class MainActivity extends Activity {
     DB db;
     SimpleCursorAdapter scAdapter;
     Cursor cursor;
-    String str = "";
+    EditText etInput;
 
     /** Called when the activity is first created. */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Находим etInput
+        etInput = (EditText) findViewById(R.id.etInput);
 
         // открываем подключение к БД
         db = new DB(this);
@@ -48,13 +53,22 @@ public class MainActivity extends Activity {
         registerForContextMenu(lvData);
     }
 
-    // обработка нажатия кнопки
+    // обработка нажатия кнопки Добавления записи
     public void onButtonClick(View view) {
-        // добавляем запись
-        db.addRec("sometext " + (cursor.getCount() + 1), R.drawable.ic_launcher);
-        // обновляем курсор
-        cursor.requery();
+        // Проверяем не пустое ли поле ввода
+        if (etInput.getText().toString().equals("")) {
+            Toast.makeText(this, "Введите текст заметки", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            // добавляем запись
+            db.addRec(etInput.getText().toString() + (cursor.getCount() + 1), R.drawable.ic_launcher);
+            // обновляем курсор
+            cursor.requery();
+            // Очищаем поле ввода
+            etInput.setText("");
+        }
     }
+
 
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenuInfo menuInfo) {
