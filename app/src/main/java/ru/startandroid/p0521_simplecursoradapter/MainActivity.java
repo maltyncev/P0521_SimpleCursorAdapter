@@ -78,6 +78,7 @@ public class MainActivity extends Activity {
 
     public boolean onContextItemSelected(MenuItem item) {
         if (item.getItemId() == CM_DELETE_ID) {
+
             // получаем из пункта контекстного меню данные по пункту списка
             AdapterContextMenuInfo acmi = (AdapterContextMenuInfo) item.getMenuInfo();
             // извлекаем id записи и удаляем соответствующую запись в БД
