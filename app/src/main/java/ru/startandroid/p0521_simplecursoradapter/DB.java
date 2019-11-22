@@ -78,7 +78,7 @@ public class DB {
 
             ContentValues cv = new ContentValues();
             for (int i = 0; i < 1; i++) {
-                cv.put(COLUMN_TXT, "Ваши заметки:");
+                cv.put(COLUMN_TXT, "Ваши заметки: ");
                 cv.put(COLUMN_IMG, R.drawable.ic_launcher);
                 db.insert(DB_TABLE, null, cv);
             }
